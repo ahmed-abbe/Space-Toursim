@@ -22,6 +22,7 @@ document.addEventListener("click", function (e) {
 // Start Destination Page
 
 // Get Data From data.json file (didn't learn how to get it from the file in js yet)
+// Please ignore and go to line 72
 let destinationData = [
     {
         name: "Moon",
@@ -69,27 +70,38 @@ let destinationData = [
     },
 ];
 let destination = document.querySelector(".destination");
-let planetName = destination.querySelector(".destination-info h3");
-let planetImg = destination.querySelector(".destination-info img");
-let planetInfo = destination.querySelector(".destination-info .planet-info");
-let planetDistance = destination.querySelector(".destination-info .about span");
-let travelTime = destination.querySelector(
-    ".destination-info .about > span:last-child"
+let planetName =
+    document.querySelector(".destination .destination-info h3") || "null";
+let planetImg = document.querySelector(".destination .destination-info img");
+let planetInfo = document.querySelector(
+    ".destination .destination-info .planet-info"
 );
-let planetLinks = destination.querySelectorAll("ul li");
+let planetDistance = document.querySelector(
+    ".destination .destination-info .about span"
+);
+let travelTime = document.querySelector(
+    ".destination .destination-info .about > span:last-child"
+);
+let planetLinks = document.querySelectorAll(".destination ul li");
 
-// add event listener to the planet links
+// Add event listener to the planet links
 planetLinks.forEach((ele) => {
     ele.addEventListener("click", (e) => {
+        // Remove active class from all links
         planetLinks.forEach((ele) => {
             ele.classList.remove("active");
         });
+
+        // Add Active class at the clicked element
         e.target.classList.add("active");
+
         let planet = e.target.innerText;
         planet = planet[0] + planet.slice(1).toLowerCase();
+        // Get the data where the planet name = the planet that had been clicked
         for (let i = 0, n = destinationData.length; i < n; i++) {
             if (destinationData[i].name === planet) {
                 planetName.innerHTML = planet;
+                planetImg.alt = destinationData[i].name + " Image";
                 planetImg.src = destinationData[i].images.png;
                 planetInfo.innerHTML = destinationData[i].description;
                 let head = planetDistance.firstElementChild;
@@ -104,4 +116,73 @@ planetLinks.forEach((ele) => {
 });
 
 // End Destination Page
-// End Functions
+// Start Crew Page
+
+// Get Data From data.json file (didn't learn how to get it from the file in js yet)
+// Please ignore and go to line 150
+let crew = [
+    {
+        name: "Douglas Hurley",
+        images: {
+            png: "./assets/crew/image-douglas-hurley.png",
+            webp: "./assets/crew/image-douglas-hurley.webp",
+        },
+        role: "Commander",
+        bio: "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.",
+    },
+    {
+        name: "Mark Shuttleworth",
+        images: {
+            png: "./assets/crew/image-mark-shuttleworth.png",
+            webp: "./assets/crew/image-mark-shuttleworth.webp",
+        },
+        role: "Mission Specialist",
+        bio: "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist.",
+    },
+    {
+        name: "Victor Glover",
+        images: {
+            png: "./assets/crew/image-victor-glover.png",
+            webp: "./assets/crew/image-victor-glover.webp",
+        },
+        role: "Pilot",
+        bio: "Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.He was a crew member of Expedition 64, and served as a station systems flight engineer.",
+    },
+    {
+        name: "Anousheh Ansari",
+        images: {
+            png: "./assets/crew/image-anousheh-ansari.png",
+            webp: "./assets/crew/image-anousheh-ansari.webp",
+        },
+        role: "Flight Engineer",
+        bio: "Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space.",
+    },
+];
+let job = document.querySelector(".crew .detail .job");
+let crewName = document.querySelector(".crew .detail h1");
+let about = document.querySelector(".crew .detail p");
+let dotsParent = document.querySelector(".crew .detail .dots");
+let dots = document.querySelectorAll(".crew .detail .dots .dot");
+let image = document.querySelector(".crew .image img");
+
+// Add event listener to the dots
+dots.forEach((dot) => {
+    dot.addEventListener("click", function (e) {
+        // Remove active class from all dots
+        dots.forEach((dot) => dot.classList.remove("active"));
+
+        // Add the active class to the element that had been clicked
+        e.target.classList.add("active");
+        let dotschild = dotsParent.children;
+        for (let i = 0, n = dotschild.length; i < n; i++) {
+            if (dotschild[i] === e.target) {
+                job.innerHTML = crew[i].role;
+                crewName.innerHTML = crew[i].name;
+                about.innerHTML = crew[i].bio;
+                image.src = crew[i].images.png;
+                image.alt = crew[i].name;
+            }
+        }
+    });
+});
+// End Crew Page

@@ -31,7 +31,7 @@
 body {
     background-image: url("assets/home/background-home-desktop.jpg");
     background-size: cover;
-    font-family: "Bellefair", serif;
+    font-family: "Barlow", sans-serif;
     color: white;
 }
 @media (max-width: 991px) {
@@ -154,7 +154,7 @@ header ul li a {
     font-size: var(--sub-heading1);
 }
 @media (max-width: 767px) {
-    header ul li::after {
+    header ul li.link::after {
         bottom: 15px;
         width: 100%;
     }
@@ -198,6 +198,11 @@ header ul li a::before {
 .home .text h1 {
     font-size: var(--h1-font-size);
 }
+@media (max-width: 767px) {
+    .home .text h1 {
+        font-size: calc(var(--h2-font-size) + 25px);
+    }
+}
 .home .text h3 {
     line-height: 1.6;
 }
@@ -224,18 +229,6 @@ header ul li a::before {
 }
 /* End Home Page */
 /* Start Destination Page */
-.destination h2 {
-    margin-top: 35px;
-    margin-bottom: 50px;
-    letter-spacing: 3px;
-    word-spacing: 5px;
-}
-@media (max-width: 767px) {
-    .destination h2 {
-        font-size: var(--nav-txt);
-        text-align: center;
-    }
-}
 @media (max-width: 992px) {
     .destination-info {
         flex-direction: column;
@@ -282,3 +275,59 @@ header ul li a::before {
     }
 }
 /* End Destination Page */
+/* Start Crew Page */
+@media (max-width: 992px) {
+    .crew .crew-info {
+        flex-direction: column;
+    }
+}
+.crew .crew-info .detail {
+    flex-basis: 55%;
+}
+.crew .crew-info .detail h3 {
+    font-family: "serif";
+    font-weight: normal;
+    font-size: 40px;
+    letter-spacing: var(--nav-txt-char-space);
+}
+.crew .crew-info .detail h1 {
+    font-weight: normal;
+    font-size: 65px;
+    font-family: "serif";
+}
+@media (max-width: 767px) {
+    .crew .crew-info .detail h3 {
+        font-size: 20px;
+    }
+    .crew .crew-info .detail h1 {
+        font-size: 30px;
+    }
+}
+.crew .crew-info .detail .dots .dot {
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+.crew .crew-info .detail .dots .dot.active {
+    background-color: white;
+}
+.crew .crew-info .detail .dots .dot:hover:not(.active) {
+    opacity: 0.6;
+    background-color: var(--main-light-blue);
+    border-color: var(--main-light-blue);
+}
+.crew .crew-info .image {
+    flex-basis: 40%;
+}
+.crew .crew-info .image img {
+    bottom: -3px;
+}
+@media (min-width: 993px) {
+    .crew .crew-info .image img {
+        position: absolute;
+        bottom: 0;
+        max-width: 400px;
+    }
+}
+/* End Crew Page */

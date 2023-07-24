@@ -62,6 +62,9 @@
 .mb-35 {
     margin-bottom: 35px;
 }
+.mt-30 {
+    margin-top: 30px;
+}
 .mb-30 {
     margin-bottom: 30px;
 }
@@ -73,6 +76,9 @@
 }
 .mr-15 {
     margin-right: 15px;
+}
+.mb-15 {
+    margin-bottom: 15px;
 }
 .m-10 {
     margin: 10px;
@@ -92,7 +98,7 @@
 .pt-30 {
     padding-top: 30px;
 }
-.pt-30 {
+.pb-30 {
     padding-bottom: 30px;
 }
 .pb-25 {
@@ -204,6 +210,18 @@ ul li.link.active::after {
 }
 ul li.link:hover::after {
     left: 0;
+}
+.main-heading {
+    margin-top: 35px;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+    word-spacing: 5px;
+}
+@media (max-width: 767px) {
+    .main-heading {
+        font-size: var(--nav-txt);
+        text-align: center;
+    }
 }
 .soon {
     height: calc(100vh - 90px);
