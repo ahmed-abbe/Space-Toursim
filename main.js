@@ -70,8 +70,7 @@ let destinationData = [
     },
 ];
 let destination = document.querySelector(".destination");
-let planetName =
-    document.querySelector(".destination .destination-info h3") || "null";
+let planetName = document.querySelector(".destination .destination-info h3");
 let planetImg = document.querySelector(".destination .destination-info img");
 let planetInfo = document.querySelector(
     ".destination .destination-info .planet-info"
@@ -173,16 +172,70 @@ dots.forEach((dot) => {
 
         // Add the active class to the element that had been clicked
         e.target.classList.add("active");
-        let dotschild = dotsParent.children;
-        for (let i = 0, n = dotschild.length; i < n; i++) {
-            if (dotschild[i] === e.target) {
-                job.innerHTML = crew[i].role;
-                crewName.innerHTML = crew[i].name;
-                about.innerHTML = crew[i].bio;
-                image.src = crew[i].images.png;
-                image.alt = crew[i].name;
-            }
+        index = e.target.getAttribute("data-id");
+        if (index < crew.length) {
+            job.innerHTML = crew[index].role;
+            crewName.innerHTML = crew[index].name;
+            about.innerHTML = crew[index].bio;
+            image.src = crew[index].images.png;
+            image.alt = crew[index].name;
         }
     });
 });
 // End Crew Page
+
+// Start Technology Page
+// Get Data From data.json file (didn't learn how to get it from the file in js yet)
+// Please ignore and go to line 219
+let technology = [
+    {
+        name: "Launch vehicle",
+        images: {
+            portrait: "./assets/technology/image-launch-vehicle-portrait.jpg",
+            landscape: "./assets/technology/image-launch-vehicle-landscape.jpg",
+        },
+        description:
+            "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!",
+    },
+    {
+        name: "Spaceport",
+        images: {
+            portrait: "./assets/technology/image-spaceport-portrait.jpg",
+            landscape: "./assets/technology/image-spaceport-landscape.jpg",
+        },
+        description:
+            "A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth’s rotation for launch.",
+    },
+    {
+        name: "Space capsule",
+        images: {
+            portrait: "./assets/technology/image-space-capsule-portrait.jpg",
+            landscape: "./assets/technology/image-space-capsule-landscape.jpg",
+        },
+        description:
+            "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.",
+    },
+];
+let list = document.querySelectorAll(".technologies .technology .nums .num");
+let technoHead = document.querySelector(".technologies .technology .about h1");
+let Para = document.querySelector(
+    ".technologies .technology .about p:last-of-type"
+);
+let technoImage = document.querySelectorAll(".technologies picture > *");
+
+list.forEach((ele) => {
+    ele.addEventListener("click", function (e) {
+        list.forEach((ele) => {
+            ele.classList.remove("active");
+        });
+        e.target.classList.add("active");
+        let index = e.target.innerHTML - 1;
+        technoHead.innerHTML = technology[index].name;
+        Para.innerHTML = technology[index].description;
+        technoImage[0].srcset = technology[index].images.landscape;
+        technoImage[1].srcset = technology[index].images.portrait;
+        technoImage[2].src = technology[index].images.portrait;
+        technoImage[2].alt = technology[index].name;
+    });
+});
+// End Technology Page

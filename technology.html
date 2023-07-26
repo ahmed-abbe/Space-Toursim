@@ -25,7 +25,7 @@
             rel="stylesheet"
         />
     </head>
-    <body class="pt-20">
+    <body class="pt-20 tech-page">
         <header class="flex-between">
             <div class="logo p-relative pl-15">
                 <img class="f-width" src="assets/shared/logo.svg" alt="Logo" />
@@ -54,8 +54,64 @@
                 </ul>
             </nav>
         </header>
-        <section class="container flex-center soon">
-            <h1>Coming Soon!</h1>
+        <section class="container technologies">
+            <h2 class="uppercase main-heading">
+                <span class="d-ib mr-10 half-opacity">03</span>
+                Space launch 101
+            </h2>
+            <div class="technology flex-between txt-center-tablet">
+                <div class="about d-flex">
+                    <ul class="nums mr-35 serif-font">
+                        <li
+                            class="active num flex-center mb-35 trans-5 pointer"
+                        >
+                            1
+                        </li>
+                        <li class="num flex-center mb-35 trans-5 pointer">2</li>
+                        <li class="num flex-center mb-35 trans-5 pointer">3</li>
+                    </ul>
+                    <div class="info-text">
+                        <p class="light-blue sub-head-txt uppercase">
+                            The terminology...
+                        </p>
+                        <h1
+                            class="uppercase serif-font font-normal mb-25 mt-10"
+                        >
+                            Launch vehicle
+                        </h1>
+                        <p class="light-blue">
+                            A launch vehicle or carrier rocket is a
+                            rocket-propelled vehicle used to carry a payload
+                            from Earth's surface to space, usually to Earth
+                            orbit or beyond. Our WEB-X carrier rocket is the
+                            most powerful in operation. Standing 150 metres
+                            tall, it's quite an awe-inspiring sight on the
+                            launch pad!
+                        </p>
+                    </div>
+                </div>
+                <div class="image">
+                    <picture>
+                        <source
+                            media="(max-width: 992px)"
+                            srcset="
+                                assets/technology/image-launch-vehicle-landscape.jpg
+                            "
+                        />
+                        <source
+                            media="(min-width: 993px)"
+                            srcset="
+                                assets/technology/image-launch-vehicle-portrait.jpg
+                            "
+                        />
+                        <img
+                            class="f-width"
+                            src="assets/technology/image-launch-vehicle-portrait.jpg"
+                            alt="launch vehicle"
+                        />
+                    </picture>
+                </div>
+            </div>
         </section>
         <script src="main.js"></script>
     </body>
