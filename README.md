@@ -1,4 +1,4 @@
-# Space Toursim Website
+# Space Tourism Website
 
 ## This is my first webiste using HTML & CSS & JavaScript
 
